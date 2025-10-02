@@ -60,13 +60,13 @@ export default function Assignments() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-white rounded-2xl shadow-lg p-6"
+        className="bg-white rounded-apple-lg shadow-apple p-8 border border-gray-100"
       >
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">Задания</h1>
+        <h1 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Задания</h1>
         
         {/* Filter Tabs */}
         <div className="flex flex-wrap gap-2">
@@ -78,11 +78,11 @@ export default function Assignments() {
           ].map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setFilter(tab.key as any)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              onClick={() => setFilter(tab.key as 'all' | 'pending' | 'submitted' | 'graded')}
+              className={`px-4 py-2.5 rounded-apple font-medium transition-all text-[15px] ${
                 filter === tab.key
-                  ? 'bg-primary-500 text-white shadow-md'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-primary-500 text-white shadow-apple'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-95'
               }`}
             >
               {tab.label}
@@ -101,22 +101,22 @@ export default function Assignments() {
           <motion.div
             key={assignment.id}
             variants={itemVariants}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+            className="bg-white rounded-apple-lg shadow-apple overflow-hidden hover:shadow-apple-lg transition-all border border-gray-100"
           >
             <div className="p-6">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-start space-x-3 mb-3">
-                    <FileText className="text-primary-600 mt-1" size={24} />
+                    <FileText className="text-primary-500 mt-0.5" size={22} strokeWidth={2} />
                     <div>
-                      <h3 className="text-xl font-bold text-gray-800">{assignment.title}</h3>
-                      <p className="text-primary-600 font-medium">{assignment.courseName}</p>
+                      <h3 className="text-lg font-semibold text-gray-900">{assignment.title}</h3>
+                      <p className="text-primary-500 font-medium text-[15px]">{assignment.courseName}</p>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-4">{assignment.description}</p>
-                  <div className="flex flex-wrap gap-4 text-sm">
+                  <p className="text-[15px] text-gray-600 mb-4">{assignment.description}</p>
+                  <div className="flex flex-wrap gap-4 text-[14px]">
                     <div className="flex items-center text-gray-600">
-                      <Calendar size={16} className="mr-2" />
+                      <Calendar size={15} className="mr-2" />
                       <span>
                         Срок: {new Date(assignment.dueDate).toLocaleDateString('ru-RU', {
                           year: 'numeric',
@@ -134,15 +134,15 @@ export default function Assignments() {
                 </div>
                 <div className="flex flex-col items-end space-y-3">
                   <span
-                    className={`px-4 py-2 rounded-full border-2 font-semibold ${getStatusColor(
+                    className={`px-4 py-2 rounded-apple border-2 font-semibold text-[13px] ${getStatusColor(
                       assignment.status
                     )}`}
                   >
                     {getStatusText(assignment.status)}
                   </span>
                   {assignment.status === 'pending' && (
-                    <button className="flex items-center space-x-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors shadow-md">
-                      <Upload size={18} />
+                    <button className="flex items-center space-x-2 px-4 py-2.5 bg-primary-500 text-white rounded-apple hover:bg-primary-600 transition-all shadow-apple active:scale-95 text-[15px] font-medium">
+                      <Upload size={17} />
                       <span>Сдать работу</span>
                     </button>
                   )}
@@ -156,11 +156,11 @@ export default function Assignments() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-white rounded-2xl shadow-lg p-12 text-center"
+            className="bg-white rounded-apple-lg shadow-apple p-12 text-center border border-gray-100"
           >
-            <FileText size={64} className="mx-auto text-gray-300 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Нет заданий</h3>
-            <p className="text-gray-600">В этой категории пока нет заданий</p>
+            <FileText size={56} className="mx-auto text-gray-300 mb-4" strokeWidth={1.5} />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Нет заданий</h3>
+            <p className="text-[15px] text-gray-600">В этой категории пока нет заданий</p>
           </motion.div>
         )}
       </motion.div>

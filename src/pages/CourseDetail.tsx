@@ -53,46 +53,46 @@ export default function CourseDetail() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-6"
+      className="space-y-8"
     >
       {/* Header */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-white rounded-2xl shadow-lg overflow-hidden"
+        className="bg-white rounded-apple-lg shadow-apple overflow-hidden border border-gray-100"
       >
         <div
-          className="h-40 p-6 flex flex-col justify-between text-white"
+          className="h-36 p-6 flex flex-col justify-between text-white"
           style={{
             background: `linear-gradient(135deg, ${course.color} 0%, ${course.color}dd 100%)`,
           }}
         >
           <Link
             to="/courses"
-            className="inline-flex items-center text-white hover:text-gray-100 transition-colors w-fit"
+            className="inline-flex items-center text-white hover:text-gray-100 transition-all w-fit active:scale-95 font-medium text-[15px]"
           >
-            <ArrowLeft size={20} className="mr-2" />
+            <ArrowLeft size={18} className="mr-2" strokeWidth={2.5} />
             Назад к курсам
           </Link>
           <div>
-            <h1 className="text-3xl font-bold">{course.name}</h1>
-            <p className="text-white/90 mt-1">{course.code}</p>
+            <h1 className="text-3xl font-semibold tracking-tight">{course.name}</h1>
+            <p className="text-white/90 mt-1 text-[15px]">{course.code}</p>
           </div>
         </div>
         <div className="p-6">
-          <p className="text-gray-700 mb-4">{course.description}</p>
+          <p className="text-gray-700 mb-4 text-[15px]">{course.description}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Преподаватель</p>
-              <p className="font-semibold text-gray-800">{course.instructor}</p>
+            <div className="bg-gray-50 rounded-apple p-4 border border-gray-100">
+              <p className="text-[13px] text-gray-600 mb-1.5 font-medium">Преподаватель</p>
+              <p className="font-semibold text-gray-900 text-[15px]">{course.instructor}</p>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Расписание</p>
-              <p className="font-semibold text-gray-800">{course.schedule}</p>
+            <div className="bg-gray-50 rounded-apple p-4 border border-gray-100">
+              <p className="text-[13px] text-gray-600 mb-1.5 font-medium">Расписание</p>
+              <p className="font-semibold text-gray-900 text-[15px]">{course.schedule}</p>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Прогресс</p>
-              <p className="font-semibold text-gray-800">{course.progress}%</p>
+            <div className="bg-gray-50 rounded-apple p-4 border border-gray-100">
+              <p className="text-[13px] text-gray-600 mb-1.5 font-medium">Прогресс</p>
+              <p className="font-semibold text-gray-900 text-[15px]">{course.progress}%</p>
             </div>
           </div>
         </div>
@@ -105,14 +105,14 @@ export default function CourseDetail() {
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6"
+          className="lg:col-span-2 bg-white rounded-apple-lg shadow-apple p-6 border border-gray-100"
         >
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Материалы курса</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight">Материалы курса</h2>
           <div className="space-y-4">
             {modules.map((module) => (
-              <div key={module.id} className="border border-gray-200 rounded-xl overflow-hidden">
+              <div key={module.id} className="border border-gray-200 rounded-apple overflow-hidden">
                 <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
-                  <h3 className="font-semibold text-gray-800">
+                  <h3 className="font-semibold text-gray-900 text-[15px]">
                     Модуль {module.id}: {module.title}
                   </h3>
                 </div>
@@ -120,17 +120,17 @@ export default function CourseDetail() {
                   {module.lessons.map((lesson) => (
                     <button
                       key={lesson.id}
-                      className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors text-left"
+                      className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-all text-left active:scale-[0.99]"
                     >
                       <div className="flex items-center space-x-3">
                         {lesson.type === 'video' ? (
-                          <Video size={20} className="text-primary-600" />
+                          <Video size={18} className="text-primary-500" strokeWidth={2} />
                         ) : (
-                          <FileText size={20} className="text-primary-600" />
+                          <FileText size={18} className="text-primary-500" strokeWidth={2} />
                         )}
-                        <span className="text-gray-800">{lesson.title}</span>
+                        <span className="text-gray-900 text-[15px]">{lesson.title}</span>
                       </div>
-                      <span className="text-sm text-gray-500">{lesson.duration}</span>
+                      <span className="text-[13px] text-gray-500 font-medium">{lesson.duration}</span>
                     </button>
                   ))}
                 </div>
@@ -147,43 +147,43 @@ export default function CourseDetail() {
           className="space-y-6"
         >
           {/* Progress */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <h3 className="font-bold text-gray-800 mb-4">Ваш прогресс</h3>
+          <div className="bg-white rounded-apple-lg shadow-apple p-6 border border-gray-100">
+            <h3 className="font-semibold text-gray-900 mb-4 text-[17px]">Ваш прогресс</h3>
             <div className="mb-4">
-              <div className="w-full bg-gray-200 rounded-full h-3">
+              <div className="w-full bg-gray-100 rounded-full h-2.5">
                 <div
-                  className="h-3 rounded-full transition-all"
+                  className="h-2.5 rounded-full transition-all"
                   style={{
                     width: `${course.progress}%`,
                     backgroundColor: course.color,
                   }}
                 />
               </div>
-              <p className="text-center text-2xl font-bold text-gray-800 mt-2">
+              <p className="text-center text-2xl font-semibold text-gray-900 mt-3">
                 {course.progress}%
               </p>
             </div>
-            <p className="text-sm text-gray-600 text-center">
+            <p className="text-[14px] text-gray-600 text-center">
               {course.progress === 100 ? 'Курс завершен!' : 'Продолжайте в том же духе!'}
             </p>
           </div>
 
           {/* Assignments */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <h3 className="font-bold text-gray-800 mb-4">Задания</h3>
+          <div className="bg-white rounded-apple-lg shadow-apple p-6 border border-gray-100">
+            <h3 className="font-semibold text-gray-900 mb-4 text-[17px]">Задания</h3>
             {courseAssignments.length > 0 ? (
               <div className="space-y-3">
                 {courseAssignments.map((assignment) => (
                   <div
                     key={assignment.id}
-                    className="p-3 rounded-lg border border-gray-200 hover:border-primary-300 transition-colors"
+                    className="p-3 rounded-apple border border-gray-200 hover:border-primary-300 transition-all hover:shadow-apple"
                   >
-                    <h4 className="font-semibold text-gray-800 text-sm mb-1">
+                    <h4 className="font-semibold text-gray-900 text-[14px] mb-1.5">
                       {assignment.title}
                     </h4>
-                    <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center justify-between text-[12px]">
                       <span
-                        className={`px-2 py-1 rounded-full ${
+                        className={`px-2 py-1 rounded-full font-semibold ${
                           assignment.status === 'pending'
                             ? 'bg-orange-100 text-orange-700'
                             : assignment.status === 'submitted'

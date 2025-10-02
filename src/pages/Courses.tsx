@@ -27,14 +27,14 @@ const itemVariants = {
 
 export default function Courses() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-white rounded-2xl shadow-lg p-6"
+        className="bg-white rounded-apple-lg shadow-apple p-8 border border-gray-100"
       >
-        <h1 className="text-3xl font-bold text-gray-800">Мои курсы</h1>
-        <p className="text-gray-600 mt-2">
+        <h1 className="text-3xl font-semibold text-gray-900 tracking-tight">Мои курсы</h1>
+        <p className="text-[15px] text-gray-600 mt-2">
           Всего курсов: {mockCourses.length}
         </p>
       </motion.div>
@@ -49,10 +49,10 @@ export default function Courses() {
           <motion.div key={course.id} variants={itemVariants}>
             <Link
               to={`/courses/${course.id}`}
-              className="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden group"
+              className="block bg-white rounded-apple-lg shadow-apple hover:shadow-apple-lg transition-all overflow-hidden group border border-gray-100 active:scale-[0.98]"
             >
               <div
-                className="h-32 p-6 flex items-center justify-center text-white relative overflow-hidden"
+                className="h-28 p-6 flex items-center justify-center text-white relative overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, ${course.color} 0%, ${course.color}dd 100%)`,
                 }}
@@ -62,33 +62,33 @@ export default function Courses() {
                   whileHover={{ scale: 1.5 }}
                   transition={{ duration: 0.3 }}
                 />
-                <BookOpen size={48} className="relative z-10" />
+                <BookOpen size={40} className="relative z-10 opacity-95" strokeWidth={2} />
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-xl font-bold text-gray-800">{course.name}</h2>
-                  <span className="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                  <h2 className="text-lg font-semibold text-gray-900">{course.name}</h2>
+                  <span className="text-[12px] font-semibold text-gray-600 bg-gray-100 px-2.5 py-1 rounded-full">
                     {course.code}
                   </span>
                 </div>
-                <p className="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-sm text-gray-600">
-                    <User size={16} className="mr-2" />
+                <p className="text-[14px] text-gray-600 mb-4 line-clamp-2">{course.description}</p>
+                <div className="space-y-2.5">
+                  <div className="flex items-center text-[13px] text-gray-600">
+                    <User size={15} className="mr-2" />
                     {course.instructor}
                   </div>
-                  <div className="flex items-center text-sm text-gray-600">
-                    <Clock size={16} className="mr-2" />
+                  <div className="flex items-center text-[13px] text-gray-600">
+                    <Clock size={15} className="mr-2" />
                     {course.schedule}
                   </div>
                   <div>
-                    <div className="flex justify-between text-sm mb-1">
+                    <div className="flex justify-between text-[13px] mb-1.5">
                       <span className="text-gray-600">Прогресс</span>
-                      <span className="font-medium text-gray-800">{course.progress}%</span>
+                      <span className="font-semibold text-gray-900">{course.progress}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gray-100 rounded-full h-1.5">
                       <motion.div
-                        className="h-2 rounded-full"
+                        className="h-1.5 rounded-full"
                         style={{ backgroundColor: course.color }}
                         initial={{ width: 0 }}
                         animate={{ width: `${course.progress}%` }}
