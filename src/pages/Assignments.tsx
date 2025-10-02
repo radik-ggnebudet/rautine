@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Calendar, Upload } from 'lucide-react';
 import { mockAssignments } from '../data/mockData';
+import { PageContainer } from '../components/layout/PageContainer';
+import { Card } from '../components/ui/Card';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -60,110 +62,111 @@ export default function Assignments() {
   };
 
   return (
-    <div className="space-y-8">
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white rounded-apple-lg shadow-apple p-8 border border-gray-100"
-      >
-        <h1 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Задания</h1>
-        
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2">
-          {[
-            { key: 'all', label: 'Все' },
-            { key: 'pending', label: 'В ожидании' },
-            { key: 'submitted', label: 'Сданные' },
-            { key: 'graded', label: 'Оцененные' },
-          ].map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setFilter(tab.key as 'all' | 'pending' | 'submitted' | 'graded')}
-              className={`px-4 py-2.5 rounded-apple font-medium transition-all text-[15px] ${
-                filter === tab.key
-                  ? 'bg-primary-500 text-white shadow-apple'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-95'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </motion.div>
+    <PageContainer>
+      <div className="space-y-8">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+        >
+          <Card hover padding="lg">
+            <h1 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Задания</h1>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { key: 'all', label: 'Все' },
+                { key: 'pending', label: 'В ожидании' },
+                { key: 'submitted', label: 'Сданные' },
+                { key: 'graded', label: 'Оцененные' },
+              ].map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setFilter(tab.key as 'all' | 'pending' | 'submitted' | 'graded')}
+                  className={`px-4 py-2.5 rounded-apple font-medium transition-all text-[15px] ${
+                    filter === tab.key
+                      ? 'bg-primary-500 text-white shadow-apple'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-95'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="space-y-4"
-      >
-        {filteredAssignments.map((assignment) => (
-          <motion.div
-            key={assignment.id}
-            variants={itemVariants}
-            className="bg-white rounded-apple-lg shadow-apple overflow-hidden hover:shadow-apple-lg transition-all border border-gray-100"
-          >
-            <div className="p-6">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex items-start space-x-3 mb-3">
-                    <FileText className="text-primary-500 mt-0.5" size={22} strokeWidth={2} />
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{assignment.title}</h3>
-                      <p className="text-primary-500 font-medium text-[15px]">{assignment.courseName}</p>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="space-y-4"
+        >
+          {filteredAssignments.map((assignment) => (
+            <motion.div
+              key={assignment.id}
+              variants={itemVariants}
+              className="card card-hover overflow-hidden"
+            >
+              <div className="p-6">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-start space-x-3 mb-3">
+                      <FileText className="text-primary-500 mt-0.5" size={22} strokeWidth={2} />
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900">{assignment.title}</h3>
+                        <p className="text-primary-500 font-medium text-[15px]">{assignment.courseName}</p>
+                      </div>
+                    </div>
+                    <p className="text-[15px] text-gray-600 mb-4">{assignment.description}</p>
+                    <div className="flex flex-wrap gap-4 text-[14px]">
+                      <div className="flex items-center text-gray-600">
+                        <Calendar size={15} className="mr-2" />
+                        <span>
+                          Срок: {new Date(assignment.dueDate).toLocaleDateString('ru-RU', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
+                        </span>
+                      </div>
+                      {assignment.grade !== undefined && (
+                        <div className="flex items-center font-semibold text-green-600">
+                          Оценка: {assignment.grade}/100
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <p className="text-[15px] text-gray-600 mb-4">{assignment.description}</p>
-                  <div className="flex flex-wrap gap-4 text-[14px]">
-                    <div className="flex items-center text-gray-600">
-                      <Calendar size={15} className="mr-2" />
-                      <span>
-                        Срок: {new Date(assignment.dueDate).toLocaleDateString('ru-RU', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })}
-                      </span>
-                    </div>
-                    {assignment.grade !== undefined && (
-                      <div className="flex items-center font-semibold text-green-600">
-                        Оценка: {assignment.grade}/100
-                      </div>
+                  <div className="flex flex-col items-end space-y-3">
+                    <span
+                      className={`px-4 py-2 rounded-apple border-2 font-semibold text-[13px] ${getStatusColor(
+                        assignment.status
+                      )}`}
+                    >
+                      {getStatusText(assignment.status)}
+                    </span>
+                    {assignment.status === 'pending' && (
+                      <button className="flex items-center space-x-2 px-4 py-2.5 bg-primary-500 text-white rounded-apple hover:bg-primary-600 transition-all shadow-apple active:scale-95 text-[15px] font-medium">
+                        <Upload size={17} />
+                        <span>Сдать работу</span>
+                      </button>
                     )}
                   </div>
                 </div>
-                <div className="flex flex-col items-end space-y-3">
-                  <span
-                    className={`px-4 py-2 rounded-apple border-2 font-semibold text-[13px] ${getStatusColor(
-                      assignment.status
-                    )}`}
-                  >
-                    {getStatusText(assignment.status)}
-                  </span>
-                  {assignment.status === 'pending' && (
-                    <button className="flex items-center space-x-2 px-4 py-2.5 bg-primary-500 text-white rounded-apple hover:bg-primary-600 transition-all shadow-apple active:scale-95 text-[15px] font-medium">
-                      <Upload size={17} />
-                      <span>Сдать работу</span>
-                    </button>
-                  )}
-                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
 
-        {filteredAssignments.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="bg-white rounded-apple-lg shadow-apple p-12 text-center border border-gray-100"
-          >
-            <FileText size={56} className="mx-auto text-gray-300 mb-4" strokeWidth={1.5} />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Нет заданий</h3>
-            <p className="text-[15px] text-gray-600">В этой категории пока нет заданий</p>
-          </motion.div>
-        )}
-      </motion.div>
-    </div>
+          {filteredAssignments.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="card p-12 text-center"
+            >
+              <FileText size={56} className="mx-auto text-gray-300 mb-4" strokeWidth={1.5} />
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Нет заданий</h3>
+              <p className="text-[15px] text-gray-600">В этой категории пока нет заданий</p>
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
+    </PageContainer>
   );
 }
