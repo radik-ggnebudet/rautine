@@ -58,14 +58,14 @@ export default function Schedule() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-white rounded-2xl shadow-lg p-6"
+        className="bg-white rounded-apple-lg shadow-apple p-8 border border-gray-100"
       >
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Расписание</h1>
-        <p className="text-gray-600">Ваше еженедельное расписание занятий</p>
+        <h1 className="text-3xl font-semibold text-gray-900 mb-2 tracking-tight">Расписание</h1>
+        <p className="text-[15px] text-gray-600">Ваше еженедельное расписание занятий</p>
       </motion.div>
 
       {/* Weekly Schedule */}
@@ -82,11 +82,11 @@ export default function Schedule() {
             <motion.div
               key={day}
               variants={itemVariants}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              className="bg-white rounded-apple-lg shadow-apple overflow-hidden border border-gray-100"
             >
               <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-4">
-                <h2 className="text-xl font-bold text-white flex items-center">
-                  <Calendar className="mr-2" size={20} />
+                <h2 className="text-lg font-semibold text-white flex items-center">
+                  <Calendar className="mr-2" size={18} strokeWidth={2} />
                   {day}
                 </h2>
               </div>
@@ -96,29 +96,29 @@ export default function Schedule() {
                     {daySchedule.map((event) => (
                       <div
                         key={event.id}
-                        className="p-4 rounded-xl border-2 border-gray-100 hover:border-primary-300 hover:shadow-md transition-all"
+                        className="p-3.5 rounded-apple border border-gray-200 hover:border-primary-300 hover:shadow-apple transition-all"
                       >
                         <div className="flex items-start justify-between mb-2">
-                          <h3 className="font-semibold text-gray-800 flex-1">
+                          <h3 className="font-semibold text-gray-900 flex-1 text-[15px]">
                             {event.courseName}
                           </h3>
                           <span
-                            className={`text-xs px-2 py-1 rounded-full border ${getTypeColor(
+                            className={`text-[11px] px-2 py-1 rounded-full border font-semibold ${getTypeColor(
                               event.type
                             )}`}
                           >
                             {getTypeText(event.type)}
                           </span>
                         </div>
-                        <div className="space-y-1 text-sm text-gray-600">
+                        <div className="space-y-1 text-[13px] text-gray-600">
                           <div className="flex items-center">
-                            <Clock size={14} className="mr-2" />
+                            <Clock size={13} className="mr-2" />
                             <span>
                               {event.startTime} - {event.endTime}
                             </span>
                           </div>
                           <div className="flex items-center">
-                            <MapPin size={14} className="mr-2" />
+                            <MapPin size={13} className="mr-2" />
                             <span>{event.room}</span>
                           </div>
                         </div>
@@ -127,8 +127,8 @@ export default function Schedule() {
                   </div>
                 ) : (
                   <div className="py-8 text-center">
-                    <Calendar size={48} className="mx-auto text-gray-300 mb-2" />
-                    <p className="text-gray-500">Нет занятий</p>
+                    <Calendar size={44} className="mx-auto text-gray-300 mb-2" strokeWidth={1.5} />
+                    <p className="text-[15px] text-gray-500">Нет занятий</p>
                   </div>
                 )}
               </div>
@@ -142,37 +142,37 @@ export default function Schedule() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="bg-white rounded-2xl shadow-lg p-6"
+        className="bg-white rounded-apple-lg shadow-apple p-6 border border-gray-100"
       >
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Все занятия</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-6 tracking-tight">Все занятия</h2>
         <div className="space-y-3">
           {mockSchedule.map((event) => (
             <div
               key={event.id}
-              className="flex flex-col md:flex-row md:items-center md:justify-between p-4 rounded-xl border-2 border-gray-100 hover:border-primary-300 hover:shadow-md transition-all gap-3"
+              className="flex flex-col md:flex-row md:items-center md:justify-between p-4 rounded-apple border border-gray-200 hover:border-primary-300 hover:shadow-apple transition-all gap-3"
             >
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-1">
-                  <h3 className="font-semibold text-gray-800">{event.courseName}</h3>
+                  <h3 className="font-semibold text-gray-900 text-[15px]">{event.courseName}</h3>
                   <span
-                    className={`text-xs px-2 py-1 rounded-full border ${getTypeColor(
+                    className={`text-[11px] px-2 py-1 rounded-full border font-semibold ${getTypeColor(
                       event.type
                     )}`}
                   >
                     {getTypeText(event.type)}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">{event.day}</p>
+                <p className="text-[13px] text-gray-600">{event.day}</p>
               </div>
-              <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+              <div className="flex flex-wrap gap-4 text-[13px] text-gray-600">
                 <div className="flex items-center">
-                  <Clock size={16} className="mr-2" />
+                  <Clock size={15} className="mr-2" />
                   <span>
                     {event.startTime} - {event.endTime}
                   </span>
                 </div>
                 <div className="flex items-center">
-                  <MapPin size={16} className="mr-2" />
+                  <MapPin size={15} className="mr-2" />
                   <span>{event.room}</span>
                 </div>
               </div>
