@@ -78,7 +78,7 @@ export default function Assignments() {
           ].map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setFilter(tab.key as any)}
+              onClick={() => setFilter(tab.key as 'all' | 'pending' | 'submitted' | 'graded')}
               className={`px-4 py-2.5 rounded-apple font-medium transition-all text-[15px] ${
                 filter === tab.key
                   ? 'bg-primary-500 text-white shadow-apple'
