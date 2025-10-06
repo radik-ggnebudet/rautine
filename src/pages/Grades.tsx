@@ -51,7 +51,7 @@ export default function Grades() {
           animate={{ y: 0, opacity: 1 }}
         >
           <Card hover padding="lg">
-            <h1 className="text-3xl font-semibold text-gray-900 mb-2 tracking-tight">Оценки</h1>
+            <h1 className="text-3xl font-medium text-gray-900 mb-2 tracking-tight">Оценки</h1>
             <p className="text-[15px] text-gray-600">Ваши академические результаты</p>
           </Card>
         </motion.div>
@@ -64,9 +64,9 @@ export default function Grades() {
             transition={{ delay: 0.1 }}
             className="bg-gradient-to-br from-green-500 to-green-600 rounded-apple-lg shadow-apple-lg p-6 text-white"
           >
-            <BarChart3 className="mb-3 opacity-90" size={28} strokeWidth={2} />
-            <h3 className="text-4xl font-semibold mb-2">{averageGrade.toFixed(1)}%</h3>
-            <p className="text-[13px] text-white/80 font-medium">Средний балл</p>
+            <BarChart3 className="mb-3 opacity-90" size={28} strokeWidth={1.8} />
+            <h3 className="text-4xl font-medium mb-2">{averageGrade.toFixed(1)}%</h3>
+            <p className="text-[13px] text-white/80 font-normal">Средний балл</p>
           </motion.div>
 
           <motion.div
@@ -75,9 +75,9 @@ export default function Grades() {
             transition={{ delay: 0.2 }}
             className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-apple-lg shadow-apple-lg p-6 text-white"
           >
-            <TrendingUp className="mb-3 opacity-90" size={28} strokeWidth={2} />
-            <h3 className="text-4xl font-semibold mb-2">{mockGrades.length}</h3>
-            <p className="text-[13px] text-white/80 font-medium">Всего оценок</p>
+            <TrendingUp className="mb-3 opacity-90" size={28} strokeWidth={1.8} />
+            <h3 className="text-4xl font-medium mb-2">{mockGrades.length}</h3>
+            <p className="text-[13px] text-white/80 font-normal">Всего оценок</p>
           </motion.div>
         </div>
 
@@ -88,7 +88,7 @@ export default function Grades() {
           transition={{ delay: 0.3 }}
         >
           <Card padding="md">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6 tracking-tight">Оценки по курсам</h2>
+            <h2 className="text-2xl font-medium text-gray-900 mb-6 tracking-tight">Оценки по курсам</h2>
             <div className="space-y-6">
               {courseGrades.map((course) => (
                 <div key={course.id} className="border-b border-gray-200 last:border-b-0 pb-6 last:pb-0">
@@ -99,12 +99,12 @@ export default function Grades() {
                         style={{ backgroundColor: course.color }}
                       />
                       <div>
-                        <h3 className="font-semibold text-gray-900 text-[15px]">{course.name}</h3>
+                        <h3 className="font-medium text-gray-900 text-[15px]">{course.name}</h3>
                         <p className="text-[13px] text-gray-600">{course.code}</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-semibold text-gray-900">
+                      <p className="text-2xl font-medium text-gray-900">
                         {course.average > 0 ? course.average.toFixed(1) : '-'}%
                       </p>
                       <p className="text-[13px] text-gray-600">
@@ -136,7 +136,7 @@ export default function Grades() {
           animate="visible"
         >
           <Card padding="md">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6 tracking-tight">Последние оценки</h2>
+            <h2 className="text-2xl font-medium text-gray-900 mb-6 tracking-tight">Последние оценки</h2>
             <div className="space-y-3">
               {mockGrades.map((grade) => (
                 <motion.div
@@ -145,7 +145,7 @@ export default function Grades() {
                   className="flex items-center justify-between p-4 rounded-apple border border-gray-200 hover:border-primary-300 hover:shadow-apple transition-all"
                 >
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 text-[15px]">{grade.assignmentName}</h3>
+                    <h3 className="font-medium text-gray-900 text-[15px]">{grade.assignmentName}</h3>
                     <p className="text-[13px] text-gray-600">{grade.courseName}</p>
                     <p className="text-[12px] text-gray-500 mt-1">
                       {new Date(grade.date).toLocaleDateString('ru-RU', {
@@ -156,12 +156,12 @@ export default function Grades() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-semibold text-gray-900">
+                    <div className="text-3xl font-medium text-gray-900">
                       {grade.grade}
                       <span className="text-lg text-gray-500">/{grade.maxGrade}</span>
                     </div>
                     <div
-                      className={`text-[13px] font-semibold ${
+                      className={`text-[13px] font-medium ${
                         (grade.grade / grade.maxGrade) * 100 >= 90
                           ? 'text-green-600'
                           : (grade.grade / grade.maxGrade) * 100 >= 75

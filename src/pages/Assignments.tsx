@@ -69,7 +69,7 @@ export default function Assignments() {
           animate={{ y: 0, opacity: 1 }}
         >
           <Card hover padding="lg">
-            <h1 className="text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Задания</h1>
+            <h1 className="text-3xl font-medium text-gray-900 mb-4 tracking-tight">Задания</h1>
             <div className="flex flex-wrap gap-2">
               {[
                 { key: 'all', label: 'Все' },
@@ -80,7 +80,7 @@ export default function Assignments() {
                 <button
                   key={tab.key}
                   onClick={() => setFilter(tab.key as 'all' | 'pending' | 'submitted' | 'graded')}
-                  className={`px-4 py-2.5 rounded-apple font-medium transition-all text-[15px] ${
+                  className={`px-4 py-2.5 rounded-apple font-normal transition-all text-[15px] ${
                     filter === tab.key
                       ? 'bg-primary-500 text-white shadow-apple'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-95'
@@ -109,10 +109,10 @@ export default function Assignments() {
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-start space-x-3 mb-3">
-                      <FileText className="text-primary-500 mt-0.5" size={22} strokeWidth={2} />
+                      <FileText className="text-primary-500 mt-0.5" size={22} strokeWidth={1.8} />
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{assignment.title}</h3>
-                        <p className="text-primary-500 font-medium text-[15px]">{assignment.courseName}</p>
+                        <h3 className="text-lg font-medium text-gray-900">{assignment.title}</h3>
+                        <p className="text-primary-500 font-normal text-[15px]">{assignment.courseName}</p>
                       </div>
                     </div>
                     <p className="text-[15px] text-gray-600 mb-4">{assignment.description}</p>
@@ -128,7 +128,7 @@ export default function Assignments() {
                         </span>
                       </div>
                       {assignment.grade !== undefined && (
-                        <div className="flex items-center font-semibold text-green-600">
+                        <div className="flex items-center font-medium text-green-600">
                           Оценка: {assignment.grade}/100
                         </div>
                       )}
@@ -136,14 +136,14 @@ export default function Assignments() {
                   </div>
                   <div className="flex flex-col items-end space-y-3">
                     <span
-                      className={`px-4 py-2 rounded-apple border-2 font-semibold text-[13px] ${getStatusColor(
+                      className={`px-4 py-2 rounded-apple border-2 font-medium text-[13px] ${getStatusColor(
                         assignment.status
                       )}`}
                     >
                       {getStatusText(assignment.status)}
                     </span>
                     {assignment.status === 'pending' && (
-                      <button className="flex items-center space-x-2 px-4 py-2.5 bg-primary-500 text-white rounded-apple hover:bg-primary-600 transition-all shadow-apple active:scale-95 text-[15px] font-medium">
+                      <button className="flex items-center space-x-2 px-4 py-2.5 bg-primary-500 text-white rounded-apple hover:bg-primary-600 transition-all shadow-apple active:scale-95 text-[15px] font-normal">
                         <Upload size={17} />
                         <span>Сдать работу</span>
                       </button>
@@ -161,7 +161,7 @@ export default function Assignments() {
               className="card p-12 text-center"
             >
               <FileText size={56} className="mx-auto text-gray-300 mb-4" strokeWidth={1.5} />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Нет заданий</h3>
+              <h3 className="text-xl font-medium text-gray-900 mb-2">Нет заданий</h3>
               <p className="text-[15px] text-gray-600">В этой категории пока нет заданий</p>
             </motion.div>
           )}

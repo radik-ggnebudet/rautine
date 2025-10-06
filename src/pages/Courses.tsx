@@ -36,7 +36,7 @@ export default function Courses() {
           animate={{ y: 0, opacity: 1 }}
         >
           <Card hover padding="lg">
-            <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">Мои курсы</h1>
+            <h1 className="text-3xl font-medium text-gray-900 dark:text-gray-100 tracking-tight">Мои курсы</h1>
             <p className="text-[15px] text-gray-600 dark:text-gray-300 mt-2">
               Всего курсов: {mockCourses.length}
             </p>
@@ -66,12 +66,12 @@ export default function Courses() {
                     whileHover={{ scale: 1.5 }}
                     transition={{ duration: 0.3 }}
                   />
-                  <BookOpen size={40} className="relative z-10 opacity-95" strokeWidth={2} />
+                  <BookOpen size={40} className="relative z-10 opacity-95" strokeWidth={1.8} />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{course.name}</h2>
-                    <span className="text-[12px] font-semibold text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 px-2.5 py-1 rounded-full">
+                    <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">{course.name}</h2>
+                    <span className="text-[12px] font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 px-2.5 py-1 rounded-full">
                       {course.code}
                     </span>
                   </div>
@@ -88,7 +88,7 @@ export default function Courses() {
                     <div>
                       <div className="flex justify-between text-[13px] mb-1.5">
                         <span className="text-gray-600 dark:text-gray-400">Прогресс</span>
-                        <span className="font-semibold text-gray-900 dark:text-gray-100">{course.progress}%</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">{course.progress}%</span>
                       </div>
                       <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-1.5">
                         <motion.div
