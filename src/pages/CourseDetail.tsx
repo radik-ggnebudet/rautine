@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, FileText, Video, Download } from 'lucide-react';
 import { mockCourses, mockAssignments } from '../data/mockData';
 import { PageContainer } from '../components/layout/PageContainer';
-import { Card } from '../components/ui/Card';
 
 export default function CourseDetail() {
   const { id } = useParams();
@@ -77,7 +76,7 @@ export default function CourseDetail() {
             Назад к курсам
           </Link>
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight">{course.name}</h1>
+            <h1 className="text-3xl font-medium tracking-tight">{course.name}</h1>
             <p className="text-white/90 mt-1 text-[15px]">{course.code}</p>
           </div>
         </div>
@@ -86,15 +85,15 @@ export default function CourseDetail() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-gray-50 rounded-apple p-4 border border-gray-100">
               <p className="text-[13px] text-gray-600 mb-1.5 font-medium">Преподаватель</p>
-              <p className="font-semibold text-gray-900 text-[15px]">{course.instructor}</p>
+              <p className="font-medium text-gray-900 text-[15px]">{course.instructor}</p>
             </div>
             <div className="bg-gray-50 rounded-apple p-4 border border-gray-100">
               <p className="text-[13px] text-gray-600 mb-1.5 font-medium">Расписание</p>
-              <p className="font-semibold text-gray-900 text-[15px]">{course.schedule}</p>
+              <p className="font-medium text-gray-900 text-[15px]">{course.schedule}</p>
             </div>
             <div className="bg-gray-50 rounded-apple p-4 border border-gray-100">
               <p className="text-[13px] text-gray-600 mb-1.5 font-medium">Прогресс</p>
-              <p className="font-semibold text-gray-900 text-[15px]">{course.progress}%</p>
+              <p className="font-medium text-gray-900 text-[15px]">{course.progress}%</p>
             </div>
           </div>
         </div>
@@ -110,12 +109,12 @@ export default function CourseDetail() {
             transition={{ delay: 0.1 }}
             className="lg:col-span-2 card p-6"
           >
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight">Материалы курса</h2>
+            <h2 className="text-2xl font-medium text-gray-900 mb-4 tracking-tight">Материалы курса</h2>
             <div className="space-y-4">
               {modules.map((module) => (
                 <div key={module.id} className="border border-gray-200 rounded-apple overflow-hidden">
                   <div className="bg-gray-50 px-4 py-3 border-b border-gray-200">
-                    <h3 className="font-semibold text-gray-900 text-[15px]">
+                    <h3 className="font-medium text-gray-900 text-[15px]">
                       Модуль {module.id}: {module.title}
                     </h3>
                   </div>
@@ -149,10 +148,10 @@ export default function CourseDetail() {
             transition={{ delay: 0.2 }}
             className="space-y-6"
           >
-            <Card padding="md">
+            <div className="card p-5">
               {/* Progress */}
-              <div className="bg-white rounded-apple-lg shadow-apple p-6 border border-gray-100">
-                <h3 className="font-semibold text-gray-900 mb-4 text-[17px]">Ваш прогресс</h3>
+              <div>
+                <h3 className="font-medium text-gray-900 mb-4 text-[17px]">Ваш прогресс</h3>
                 <div className="mb-4">
                   <div className="w-full bg-gray-100 rounded-full h-2.5">
                     <div
@@ -163,7 +162,7 @@ export default function CourseDetail() {
                       }}
                     />
                   </div>
-                  <p className="text-center text-2xl font-semibold text-gray-900 mt-3">
+                  <p className="text-center text-2xl font-medium text-gray-900 mt-3">
                     {course.progress}%
                   </p>
                 </div>
@@ -171,11 +170,11 @@ export default function CourseDetail() {
                   {course.progress === 100 ? 'Курс завершен!' : 'Продолжайте в том же духе!'}
                 </p>
               </div>
-            </Card>
-            <Card padding="md">
+            </div>
+            <div className="card p-5">
               {/* Assignments */}
-              <div className="bg-white rounded-apple-lg shadow-apple p-6 border border-gray-100">
-                <h3 className="font-semibold text-gray-900 mb-4 text-[17px]">Задания</h3>
+              <div>
+                <h3 className="font-medium text-gray-900 mb-4 text-[17px]">Задания</h3>
                 {courseAssignments.length > 0 ? (
                   <div className="space-y-3">
                     {courseAssignments.map((assignment) => (
@@ -183,7 +182,7 @@ export default function CourseDetail() {
                         key={assignment.id}
                         className="p-3 rounded-apple border border-gray-200 hover:border-primary-300 transition-all hover:shadow-apple"
                       >
-                        <h4 className="font-semibold text-gray-900 text-[14px] mb-1.5">
+                        <h4 className="font-medium text-gray-900 text-[14px] mb-1.5">
                           {assignment.title}
                         </h4>
                         <div className="flex items-center justify-between text-[12px]">
@@ -213,23 +212,23 @@ export default function CourseDetail() {
                   <p className="text-gray-600 text-sm">Нет заданий</p>
                 )}
               </div>
-            </Card>
-            <Card padding="md" hover>
+            </div>
+            <div className="card card-hover p-5">
               {/* Resources */}
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <h3 className="font-bold text-gray-800 mb-4">Ресурсы</h3>
+              <div>
+                <h3 className="font-medium text-gray-900 mb-4 text-[17px]">Ресурсы</h3>
                 <div className="space-y-2">
-                  <button className="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors text-left">
-                    <Download size={20} className="text-primary-600" />
-                    <span className="text-gray-800">Программа курса</span>
+                  <button className="w-full flex items-center space-x-3 p-3 rounded-apple hover:bg-gray-50 transition-colors text-left">
+                    <Download size={20} className="text-primary-500" strokeWidth={1.8} />
+                    <span className="text-gray-900 text-[15px]">Программа курса</span>
                   </button>
-                  <button className="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors text-left">
-                    <Download size={20} className="text-primary-600" />
-                    <span className="text-gray-800">Дополнительные материалы</span>
+                  <button className="w-full flex items-center space-x-3 p-3 rounded-apple hover:bg-gray-50 transition-colors text-left">
+                    <Download size={20} className="text-primary-500" strokeWidth={1.8} />
+                    <span className="text-gray-900 text-[15px]">Дополнительные материалы</span>
                   </button>
                 </div>
               </div>
-            </Card>
+            </div>
           </motion.div>
         </div>
       </PageContainer>

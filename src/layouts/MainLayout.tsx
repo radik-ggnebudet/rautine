@@ -106,7 +106,7 @@ export default function MainLayout() {
             >
               {isSidebarOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
-            <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">Rautine</h1>
+            <h1 className="text-xl font-medium tracking-tight text-gray-900 dark:text-gray-100">Rautine</h1>
           </div>
           <button
             onClick={toggleTheme}
@@ -123,12 +123,12 @@ export default function MainLayout() {
         initial={false}
         animate={{ x: isDesktop ? 0 : (isSidebarOpen ? 0 : -260) }}
         transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-        className="fixed top-0 left-0 h-full w-64 z-40 lg:translate-x-0 lg:static lg:block"
+        className="fixed top-0 left-0 h-full w-64 z-40 lg:z-auto"
+        style={{ position: isDesktop ? 'static' : 'fixed' }}
       >
-        <div className="hidden lg:block h-full" />
         <div className="glass-solid h-full flex flex-col border-r border-gray-200/60 dark:border-white/10 shadow-apple backdrop-blur-2xl">
           <div className="p-6 pb-4 flex items-center justify-between">
-            <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">Rautine</h1>
+            <h1 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-gray-100">Rautine</h1>
             <button
               onClick={toggleTheme}
               className="hidden lg:inline-flex p-2 rounded-apple hover:bg-gray-100/70 dark:hover:bg-white/10 transition active:scale-95"
@@ -145,12 +145,12 @@ export default function MainLayout() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`group flex items-center gap-3 px-4 py-2.5 rounded-apple text-[15px] font-medium transition-colors relative ${active
+                  className={`group flex items-center gap-3 px-4 py-2.5 rounded-apple text-[15px] font-normal transition-colors relative ${active
                     ? 'bg-primary-500 text-white shadow-apple'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100/70 dark:hover:bg-white/10'} `}
                 >
-                  <Icon size={20} strokeWidth={active ? 2.6 : 2} className="shrink-0" />
-                  <span className={active ? 'font-semibold' : ''}>{item.label}</span>
+                  <Icon size={20} strokeWidth={active ? 2.2 : 1.8} className="shrink-0" />
+                  <span className={active ? 'font-medium' : ''}>{item.label}</span>
                   {active && <span className="absolute inset-0 rounded-apple ring-1 ring-white/40 dark:ring-white/20" />}
                 </Link>
               );
