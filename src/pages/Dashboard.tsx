@@ -47,7 +47,7 @@ export default function Dashboard() {
       >
         <motion.div variants={itemVariants}>
           <Card hover padding="lg" className="relative overflow-hidden">
-            <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-2 tracking-tight">
+            <h1 className="text-3xl font-medium text-gray-900 dark:text-gray-100 mb-2 tracking-tight">
               Добро пожаловать, {mockStudent.name}!
             </h1>
             <p className="text-[15px] text-gray-600 dark:text-gray-300">
@@ -75,7 +75,7 @@ export default function Dashboard() {
           <motion.div variants={itemVariants}>
             <Card hover padding="lg">
               <div className="flex justify-between items-center mb-5">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Мои курсы</h2>
+                <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">Мои курсы</h2>
                 <Link
                   to="/courses"
                   className="text-primary-500 hover:text-primary-600 font-medium text-[15px] transition-colors active:scale-95"
@@ -95,7 +95,7 @@ export default function Dashboard() {
                         className="w-2.5 h-2.5 rounded-full"
                         style={{ backgroundColor: course.color }}
                       />
-                      <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-[15px]">{course.name}</h3>
+                      <h3 className="font-medium text-gray-900 dark:text-gray-100 text-[15px]">{course.name}</h3>
                     </div>
                     <p className="text-[13px] text-gray-600 dark:text-gray-400 mb-3">{course.code}</p>
                     <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-1.5">
@@ -114,7 +114,7 @@ export default function Dashboard() {
           <motion.div variants={itemVariants}>
             <Card hover padding="lg">
               <div className="flex justify-between items-center mb-5">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Предстоящие задания</h2>
+                <h2 className="text-xl font-medium text-gray-900 dark:text-gray-100">Предстоящие задания</h2>
                 <Link
                   to="/assignments"
                   className="text-primary-500 hover:text-primary-600 font-medium text-[15px] transition-colors active:scale-95"
@@ -128,7 +128,7 @@ export default function Dashboard() {
                     key={assignment.id}
                     className="p-4 rounded-apple border border-gray-200 hover:border-orange-400 hover:shadow-apple transition-all"
                   >
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1 text-[15px]">{assignment.title}</h3>
+                    <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1 text-[15px]">{assignment.title}</h3>
                     <p className="text-[13px] text-gray-600 dark:text-gray-400 mb-2.5">{assignment.courseName}</p>
                     <div className="flex items-center justify-between text-[13px]">
                       <span className="text-gray-500">Срок сдачи:</span>

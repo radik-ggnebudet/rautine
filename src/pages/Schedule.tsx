@@ -67,7 +67,7 @@ export default function Schedule() {
           animate={{ y: 0, opacity: 1 }}
         >
           <Card hover padding="lg">
-            <h1 className="text-3xl font-semibold text-gray-900 mb-2 tracking-tight">Расписание</h1>
+            <h1 className="text-3xl font-medium text-gray-900 mb-2 tracking-tight">Расписание</h1>
             <p className="text-[15px] text-gray-600">Ваше еженедельное расписание занятий</p>
           </Card>
         </motion.div>
@@ -89,8 +89,8 @@ export default function Schedule() {
                 className="card overflow-hidden"
               >
                 <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-4">
-                  <h2 className="text-lg font-semibold text-white flex items-center">
-                    <Calendar className="mr-2" size={18} strokeWidth={2} />
+                  <h2 className="text-lg font-medium text-white flex items-center">
+                    <Calendar className="mr-2" size={18} strokeWidth={1.8} />
                     {day}
                   </h2>
                 </div>
@@ -103,11 +103,11 @@ export default function Schedule() {
                           className="p-3.5 rounded-apple border border-gray-200 hover:border-primary-300 hover:shadow-apple transition-all"
                         >
                           <div className="flex items-start justify-between mb-2">
-                            <h3 className="font-semibold text-gray-900 flex-1 text-[15px]">
+                            <h3 className="font-medium text-gray-900 flex-1 text-[15px]">
                               {event.courseName}
                             </h3>
                             <span
-                              className={`text-[11px] px-2 py-1 rounded-full border font-semibold ${getTypeColor(
+                              className={`text-[11px] px-2 py-1 rounded-full border font-medium ${getTypeColor(
                                 event.type
                               )}`}
                             >
@@ -148,7 +148,7 @@ export default function Schedule() {
           transition={{ delay: 0.3 }}
         >
           <Card padding="md">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6 tracking-tight">Все занятия</h2>
+            <h2 className="text-2xl font-medium text-gray-900 mb-6 tracking-tight">Все занятия</h2>
             <div className="space-y-3">
               {mockSchedule.map((event) => (
                 <div
@@ -157,9 +157,9 @@ export default function Schedule() {
                 >
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-1">
-                      <h3 className="font-semibold text-gray-900 text-[15px]">{event.courseName}</h3>
+                      <h3 className="font-medium text-gray-900 text-[15px]">{event.courseName}</h3>
                       <span
-                        className={`text-[11px] px-2 py-1 rounded-full border font-semibold ${getTypeColor(
+                        className={`text-[11px] px-2 py-1 rounded-full border font-medium ${getTypeColor(
                           event.type
                         )}`}
                       >
